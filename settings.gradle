@@ -1,0 +1,4 @@
+rootProject.name = 'drunker'
+include 'drunker-db'
+include 'drunker-web'
+

@@ -1,0 +1,64 @@
+
+buildscript {
+
+    ext {
+        projectGroupName 	= 'com.vsu'
+        projectVersion 		= '0.2-SNAPSHOT'
+
+        springBootVersion 	= '2.2.4.RELEASE'
+
+        junitVersion 		= '4.12'
+        restAssuredVersion 	= '2.9.0'
+
+        hibernateVersion = "5.4.2.Final"
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    group projectGroupName
+    version projectVersion
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+
+    dependencies {
+
+
+        compileOnly 'org.projectlombok:lombok:1.18.12'
+        annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+        runtime('com.h2database:h2')
+
+//        compileOnly('org.projectlombok:lombok')
+
+        testCompile "junit:junit:${junitVersion}"
+        testCompile "com.jayway.restassured:rest-assured:${restAssuredVersion}"
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+}

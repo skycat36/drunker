@@ -1,0 +1,55 @@
+package com.vsu.drunker.service.user;
+
+import com.vsu.drunker.model.repository.RoleRepository;
+import com.vsu.drunker.converter.RoleConverter;
+import com.vsu.drunker.data.RoleDTO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@Slf4j
+public class RoleService {
+
+    private final RoleRepository roleRepository;
+
+    private final RoleConverter roleConverter;
+
+    public RoleService(RoleRepository roleRepository, RoleConverter roleConverter) {
+        this.roleRepository = roleRepository;
+        this.roleConverter = roleConverter;
+    }
+
+
+    @Transactional
+    public RoleDTO createRole(RoleDTO roleDTO){
+        return roleConverter.convert(roleRepository.save(roleConverter.convert(roleDTO)));
+    }
+
+    @Transactional
+    public RoleDTO updateRole(Long roleId, RoleDTO roleDTO){
+        return roleConverter.convert(roleRepository.save(roleConverter.convert(roleId, roleDTO)));
+    }
+
+    @Transactional
+    public boolean deleteRole(Long roleId){
+        if (existByIdRoleDTO(roleId)){
+            roleRepository.deleteById(roleId);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean existByIdRoleDTO(Long id){
+        return roleRepository.existsById(id);
+    }
+
+    public List<RoleDTO> getAllRoleDTO(){
+        return roleRepository.findAll().stream().map(roleConverter::convert).collect(Collectors.toList());
+    }
+
+}
