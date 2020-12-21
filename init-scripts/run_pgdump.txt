@@ -1,0 +1,1 @@
+C:/Program Files/PostgreSQL/13/bin/pg_dump.exe --no-owner --schema-only -n drunker drunker > E:\Example\drunker\init-scripts\drunker_shema.sql
