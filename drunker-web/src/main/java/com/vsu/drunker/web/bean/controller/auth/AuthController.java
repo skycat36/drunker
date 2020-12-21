@@ -1,4 +1,4 @@
-package com.vsu.drunker.web.bean.auth;
+package com.vsu.drunker.web.bean.controller.auth;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

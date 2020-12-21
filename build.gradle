@@ -3,7 +3,7 @@ buildscript {
 
     ext {
         projectGroupName 	= 'com.vsu'
-        projectVersion 		= '0.2-SNAPSHOT'
+//        projectVersion 		= '0.2-SNAPSHOT'
 
         springBootVersion 	= '2.2.4.RELEASE'
 
@@ -26,7 +26,7 @@ buildscript {
 
 allprojects {
     group projectGroupName
-    version projectVersion
+//    version projectVersion
 }
 
 subprojects {

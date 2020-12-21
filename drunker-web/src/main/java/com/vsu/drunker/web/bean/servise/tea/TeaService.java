@@ -1,8 +1,8 @@
-package com.vsu.drunker.service.tea;
+package com.vsu.drunker.web.bean.servise.tea;
 
-import com.vsu.drunker.model.repository.TeaRepository;
-import com.vsu.drunker.converter.TeaConverter;
-import com.vsu.drunker.data.TeaDTO;
+import com.vsu.drunker.db.model.repository.TeaRepository;
+import com.vsu.drunker.web.bean.converter.TeaConverter;
+import com.vsu.drunker.web.data.TeaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

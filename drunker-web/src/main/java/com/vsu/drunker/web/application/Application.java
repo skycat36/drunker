@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan("com.vsu.drunker.db.model.entity")
-@ComponentScan({"com.vsu.drunker.web.bean"})
+@ComponentScan(basePackages = {"com.vsu.drunker.web.bean"})
 @EnableJpaRepositories("com.vsu.drunker.db.model.repository")
 public class Application extends SpringBootServletInitializer {
 

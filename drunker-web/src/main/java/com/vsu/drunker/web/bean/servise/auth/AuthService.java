@@ -1,4 +1,4 @@
-package com.vsu.drunker.service.auth;
+package com.vsu.drunker.web.bean.servise.auth;
 
 import org.springframework.stereotype.Service;
 

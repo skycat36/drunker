@@ -1,4 +1,4 @@
-package com.vsu.drunker.service.rabbitmq;
+package com.vsu.drunker.web.bean.servise.rabbitmq;
 
 public class RabbitClientSender {
 }

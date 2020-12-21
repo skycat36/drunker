@@ -1,4 +1,4 @@
-package com.vsu.drunker.web.bean.user;
+package com.vsu.drunker.web.bean.controller.user;
 
 import com.vsu.drunker.db.model.entity.Role;
 import com.vsu.drunker.db.model.repository.RoleRepository;

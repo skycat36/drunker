@@ -1,5 +1,14 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+    }
+}
+
 apply plugin: 'org.springframework.boot'
 
+archivesBaseName  = 'drunker'
 
 dependencies {
     compile project(':drunker-db')

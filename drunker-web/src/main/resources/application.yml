@@ -1,8 +1,8 @@
-server.port: 8080
+#server.port: 8080
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/drunker
+    url: jdbc:postgresql://postgresqldb:5432/drunker
     username: postgres
     password: root
 #    driverClassName: org.postgresql.Driver
@@ -10,8 +10,8 @@ spring:
   jpa:
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
-    hibernate:
-      ddl-auto: validate
+#    hibernate:
+#      ddl-auto: validate
 
 
 

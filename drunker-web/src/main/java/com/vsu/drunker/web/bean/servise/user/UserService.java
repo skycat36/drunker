@@ -1,8 +1,8 @@
-package com.vsu.drunker.service.user;
+package com.vsu.drunker.web.bean.servise.user;
 
-import com.vsu.drunker.model.repository.UserRepository;
-import com.vsu.drunker.converter.UserConverter;
-import com.vsu.drunker.data.UserDTO;
+import com.vsu.drunker.db.model.repository.UserRepository;
+import com.vsu.drunker.web.bean.converter.UserConverter;
+import com.vsu.drunker.web.data.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

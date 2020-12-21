@@ -1,10 +1,10 @@
-package com.vsu.drunker.service.user;
+package com.vsu.drunker.web.bean.servise.user;
 
-import com.vsu.drunker.model.repository.RoleRepository;
-import com.vsu.drunker.converter.RoleConverter;
-import com.vsu.drunker.data.RoleDTO;
+
+import com.vsu.drunker.db.model.repository.RoleRepository;
+import com.vsu.drunker.web.bean.converter.RoleConverter;
+import com.vsu.drunker.web.data.RoleDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD com.vsu.drunker-web/build/libs/com.vsu.drunker-web.jar com.vsu.drunker.jar
+ADD drunker-web/build/libs/drunker.jar drunker.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "com.vsu.drunker.jar"]
+ENTRYPOINT ["java", "-jar", "drunker.jar"]

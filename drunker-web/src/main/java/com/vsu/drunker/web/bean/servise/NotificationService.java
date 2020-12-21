@@ -1,4 +1,4 @@
-package com.vsu.drunker.service.notification;
+package com.vsu.drunker.web.bean.servise;
 
 import org.springframework.stereotype.Service;
 

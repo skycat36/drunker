@@ -1,4 +1,4 @@
-package com.vsu.drunker.service.tea;
+package com.vsu.drunker.web.bean.servise.tea;
 
 import org.springframework.stereotype.Service;
 
