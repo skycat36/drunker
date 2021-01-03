@@ -3,6 +3,7 @@ package com.vsu.drunker.web.bean.servise.tea;
 import com.vsu.drunker.db.model.repository.KindTeaRepository;
 import com.vsu.drunker.web.bean.converter.KindTeaConverter;
 import com.vsu.drunker.web.data.KindTeaDTO;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +11,13 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @Slf4j
+@AllArgsConstructor
+@Service
 public class KindTeaService {
 
     private final KindTeaRepository kindTeaRepository;
     private final KindTeaConverter kindTeaConverter;
-
-    public KindTeaService(KindTeaRepository kindTeaRepository, KindTeaConverter kindTeaConverter) {
-        this.kindTeaRepository = kindTeaRepository;
-        this.kindTeaConverter = kindTeaConverter;
-    }
 
     @Transactional
     public KindTeaDTO createKindTea(KindTeaDTO kindTeaDTO){

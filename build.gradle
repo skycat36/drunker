@@ -1,16 +1,12 @@
-
 buildscript {
 
     ext {
         projectGroupName 	= 'com.vsu'
-//        projectVersion 		= '0.2-SNAPSHOT'
-
         springBootVersion 	= '2.2.4.RELEASE'
-
         junitVersion 		= '4.12'
         restAssuredVersion 	= '2.9.0'
-
         hibernateVersion = "5.4.2.Final"
+        springCloudVersion =  'Hoxton.SR5'
     }
 
     repositories {
@@ -26,7 +22,6 @@ buildscript {
 
 allprojects {
     group projectGroupName
-//    version projectVersion
 }
 
 subprojects {
@@ -40,6 +35,11 @@ subprojects {
         maven { url "https://repo.spring.io/milestone" }
     }
 
+//    dependencyManagement {
+//        imports {
+//            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+//        }
+//    }
 
     dependencyManagement {
         imports {
@@ -49,16 +49,11 @@ subprojects {
 
     dependencies {
 
-
         compileOnly 'org.projectlombok:lombok:1.18.12'
         annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-        runtime('com.h2database:h2')
-
-//        compileOnly('org.projectlombok:lombok')
-
         testCompile "junit:junit:${junitVersion}"
-        testCompile "com.jayway.restassured:rest-assured:${restAssuredVersion}"
         testCompile 'org.springframework.boot:spring-boot-starter-test'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }

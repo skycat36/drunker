@@ -1,22 +1,33 @@
 version: '3.1'
 services:
   app:
-    container_name: springboot-postgresql
+    container_name: springboot-drunker
     image: springboot-app
     build: ./
     ports:
       - "8080:8080"
     depends_on:
       - postgresqldb
+    networks:
+      - drunker_network
   postgresqldb:
+    container_name: springboot-postgresql
     image: postgres
     build:
       context: ./
       dockerfile: Dockerfile.postgres
     ports:
       - "5432:5432"
+    networks:
+      - drunker_network
     environment:
       - PGDATA=/var/lib/postgresql/data
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=postgres
-#      - POSTGRES_DB=drunker
+
+networks:
+  drunker_network1:
+    external: true
+    name: drunker_network
+
+#d0ffe249dec9d746aaca53a91d342dc4b385a77b86373954e8b4f7553e09933f

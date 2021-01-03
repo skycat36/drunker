@@ -4,6 +4,7 @@ package com.vsu.drunker.web.bean.servise.user;
 import com.vsu.drunker.db.model.repository.RoleRepository;
 import com.vsu.drunker.web.bean.converter.RoleConverter;
 import com.vsu.drunker.web.data.RoleDTO;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +12,14 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @Slf4j
+@AllArgsConstructor
+@Service
 public class RoleService {
 
     private final RoleRepository roleRepository;
 
     private final RoleConverter roleConverter;
-
-    public RoleService(RoleRepository roleRepository, RoleConverter roleConverter) {
-        this.roleRepository = roleRepository;
-        this.roleConverter = roleConverter;
-    }
-
 
     @Transactional
     public RoleDTO createRole(RoleDTO roleDTO){
