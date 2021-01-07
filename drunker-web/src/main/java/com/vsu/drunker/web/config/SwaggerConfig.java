@@ -1,4 +1,4 @@
-package com.vsu.drunker.web.bean.config;
+package com.vsu.drunker.web.config;
 
 
 import org.springframework.context.annotation.Bean;

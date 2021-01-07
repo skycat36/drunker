@@ -10,12 +10,18 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface SortTeaConverter {
 
-    SortTeaDTO convert(SortTea role);
+    @Mapping(target = "id", source = "sortTeaDTO.id")
+    @Mapping(target = "name", source = "sortTeaDTO.name")
+    @Mapping(target = "kindTeaId", source = "sortTeaDTO.kindId")
+    SortTeaDTO convert(SortTea sortTea);
 
-    @Mapping(target = "count",ignore = true)
-    SortTea convert(SortTeaDTO role);
+    @Mapping(target = "id", source = "sortTeaDTO.id")
+    @Mapping(target = "name", source = "sortTeaDTO.name")
+    @Mapping(target = "kindId", source = "sortTeaDTO.kindTeaId")
+    SortTea convert(SortTeaDTO sortTeaDTO);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "count",ignore = true)
-    SortTea convert(Long id, SortTeaDTO role);
+    @Mapping(target = "name", source = "sortTeaDTO.name")
+    @Mapping(target = "kindId", source = "sortTeaDTO.kindTeaId")
+    SortTea convert(Long id, SortTeaDTO sortTeaDTO);
 }

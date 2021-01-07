@@ -16,22 +16,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.List;
-
 @Api(
-        value = "Information about user", produces = "Evgeny Popov"
+        value = "Контроллер для работы с пользователями", produces = "Evgeny Popov"
 )
 @Slf4j
 @AllArgsConstructor
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
     private final FileControllerApi fileControllerApi;
 
     @ApiOperation(value = "Создать пользователя")
-    @PostMapping("/api/user")
+    @PostMapping
     public ResponseEntity<Object> createUser(@ApiParam(
             value = "User data") @RequestBody UserDTO userDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(userDTO, Create.class);
@@ -42,9 +40,10 @@ public class UserController {
         return new ResponseEntity<>(userService.createUser(userDTO), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Создать пользователя")
-    @PutMapping("/api/user/{id}")
-    public ResponseEntity<Object> updateUser(@PathVariable Long id, UserDTO userDTO){
+    @ApiOperation(value = "Обновить пользователя")
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateUser(@PathVariable Long id,
+                                             @ApiParam(value = "User data") @RequestBody UserDTO userDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(userDTO, Create.class);
 
         if (badRequestDTO != null) {
@@ -62,7 +61,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "Удалить пользователя")
-    @DeleteMapping("/api/user/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable Long id){
         if (userService.deleteUser(id)){
             return ResponseEntity.ok().build();
@@ -71,10 +70,9 @@ public class UserController {
     }
 
     @ApiOperation(value = "Вернуть всех пользователей")
-    @GetMapping("/api/getAllUser")
-    public ResponseEntity<List<String>> getAllUsers() throws IOException {
-//        return new ResponseEntity<>(userService.getAllUserDTO(), HttpStatus.OK);
-        return fileControllerApi.getAllObjectNameFromBucket("tea");
+    @GetMapping("/getAllUser")
+    public ResponseEntity<Object> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUserDTO(), HttpStatus.OK);
     }
 
 }

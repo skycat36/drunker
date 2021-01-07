@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@FeignClient(name = "FileControllerClient", url = "http://" + "${host}" + ":${port}", path = "/api/file", configuration = FileControllerConfigClient.class)
+@FeignClient(name = "FileControllerClient", url = "${services.filestorage-service.url}", path = "/api/file", configuration = FileControllerConfigClient.class)
 public interface FileControllerApi {
 
     @PostMapping("/putObject")

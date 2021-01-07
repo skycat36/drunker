@@ -20,17 +20,17 @@ public class TeaService {
     private final TeaConverter teaConverter;
 
     @Transactional
-    public TeaDTO createRole(TeaDTO roleDTO){
+    public TeaDTO createTea(TeaDTO roleDTO){
         return teaConverter.convert(teaRepository.save(teaConverter.convert(roleDTO)));
     }
 
     @Transactional
-    public TeaDTO updateRole(Long teaId, TeaDTO roleDTO){
+    public TeaDTO updateTea(Long teaId, TeaDTO roleDTO){
         return teaConverter.convert(teaRepository.save(teaConverter.convert(teaId, roleDTO)));
     }
 
     @Transactional
-    public boolean deleteRole(Long teaId){
+    public boolean deleteTea(Long teaId){
         if (existByIdTeaDTO(teaId)){
             teaRepository.deleteById(teaId);
             return true;
@@ -42,7 +42,7 @@ public class TeaService {
         return teaRepository.existsById(id);
     }
 
-    public List<TeaDTO> getAllTeaDTO(){
+    public List<TeaDTO> getAllTea(){
         return teaRepository.findAll().stream().map(teaConverter::convert).collect(Collectors.toList());
     }
 }

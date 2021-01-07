@@ -11,12 +11,15 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface KindTeaConverter {
 
-    KindTeaDTO convert(KindTea role);
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    KindTeaDTO convert(KindTea kindTeaDTO);
 
-    @Mapping(target = "count",ignore = true)
-    KindTea convert(KindTeaDTO role);
+    @Mapping(target = "name", source = "name")
+    KindTea convert(KindTeaDTO kindTeaDTO);
 
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     @Mapping(target = "count",ignore = true)
-    KindTea convert(Long id, KindTeaDTO role);
+    KindTea convert(Long id, KindTeaDTO kindTeaDTO);
 }

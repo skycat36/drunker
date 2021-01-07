@@ -3,6 +3,7 @@ package com.vsu.drunker.web.bean.servise.tea;
 import com.vsu.drunker.db.model.repository.KindTeaRepository;
 import com.vsu.drunker.web.bean.converter.KindTeaConverter;
 import com.vsu.drunker.web.data.KindTeaDTO;
+import com.vsu.drunker.web.data.SortTeaDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,11 @@ public class KindTeaService {
         return kindTeaRepository.existsById(id);
     }
 
-    public List<KindTeaDTO> getAllKindTeaDTO(){
+    public KindTeaDTO getByIdKindTeaDTO(Long id){
+        return kindTeaConverter.convert(kindTeaRepository.findById(id).orElse(null));
+    }
+
+    public List<KindTeaDTO> getAllKindTea(){
         return kindTeaRepository.findAll().stream().map(kindTeaConverter::convert).collect(Collectors.toList());
     }
 }

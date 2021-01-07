@@ -1,7 +1,10 @@
+#server:
+#  port: 8080
+
 spring:
   datasource:
     url: jdbc:postgresql://postgresqldb:5432/drunker
-#    url: jdbc:postgresql://localhost:5432/drunker
+    #    url: jdbc:postgresql://localhost:5432/drunker
     username: postgres
     password: root
 
