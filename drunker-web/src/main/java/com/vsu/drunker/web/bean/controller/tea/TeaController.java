@@ -9,6 +9,7 @@ import com.vsu.drunker.web.validation.ValidationUtils;
 import com.vsu.drunker.web.validation.group.Create;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class TeaController {
 
     @ApiOperation(value = "Возвращает  чай по id")
     @GetMapping("/{idTea}")
-    public ResponseEntity<Object> getTeaById(@PathVariable Long idTea){
+    public ResponseEntity<Object> getTeaById(@ApiParam(value = "Id") @PathVariable Long idTea){
         return new ResponseEntity<>(teaService.getTeaById(idTea), HttpStatus.OK);
     }
 
@@ -51,7 +52,7 @@ public class TeaController {
 
     @ApiOperation(value = "Обновить информацию о чае")
     @PutMapping("/{idTea}")
-    public ResponseEntity<Object> updateTea(@PathVariable Long idTea, @RequestBody TeaDTO teaDTO){
+    public ResponseEntity<Object> updateTea(@ApiParam(value = "Id") @PathVariable Long idTea, @RequestBody TeaDTO teaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(teaDTO, Create.class);
 
         if (badRequestDTO != null) {
@@ -66,7 +67,7 @@ public class TeaController {
 
     @ApiOperation(value = "Удалить сорт чая")
     @DeleteMapping("/{idTea}")
-    public ResponseEntity<Object> deleteRoles(@PathVariable Long idTea){
+    public ResponseEntity<Object> deleteRoles(@ApiParam(value = "Id") @PathVariable Long idTea){
         if (!teaService.existByIdTeaDTO(idTea)){
             return new ResponseEntity<>(new NotFoundDTO(), HttpStatus.NOT_FOUND);
         }

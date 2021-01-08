@@ -39,7 +39,7 @@ public class RoleController {
 
     @ApiOperation(value = "Изменить роль")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateRole(@PathVariable Long id,
+    public ResponseEntity<Object> updateRole(@ApiParam(value = "Id") @PathVariable Long id,
                                              @ApiParam(value = "Обновленная роль") @RequestBody RoleDTO roleDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(roleDTO, Create.class);
 
@@ -55,7 +55,7 @@ public class RoleController {
 
     @ApiOperation(value = "Удалить роль")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteRoles(@PathVariable Long id){
+    public ResponseEntity<Object> deleteRoles(@ApiParam(value = "Id") @PathVariable Long id){
         if (roleService.deleteRole(id)){
             return ResponseEntity.ok().build();
         }

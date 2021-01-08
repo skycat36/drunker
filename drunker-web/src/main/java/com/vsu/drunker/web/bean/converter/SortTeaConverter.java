@@ -12,16 +12,13 @@ public interface SortTeaConverter {
 
     @Mapping(target = "id", source = "sortTea.id")
     @Mapping(target = "name", source = "sortTea.name")
-    @Mapping(target = "kindTeaId", source = "sortTea.kindId")
     SortTeaDTO convert(SortTea sortTea);
 
     @Mapping(target = "id", source = "sortTeaDTO.id")
     @Mapping(target = "name", source = "sortTeaDTO.name")
-    @Mapping(target = "kindId", source = "sortTeaDTO.kindTeaId")
     SortTea convert(SortTeaDTO sortTeaDTO);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "sortTeaDTO.name")
-    @Mapping(target = "kindId", source = "sortTeaDTO.kindTeaId")
     SortTea convert(Long id, SortTeaDTO sortTeaDTO);
 }

@@ -24,7 +24,6 @@ public class SortTeaService {
     public SortTeaDTO createSortTea(SortTeaDTO sortTeaDTO, Long idKindTea){
 
         SortTea sortTea = sortTeaConverter.convert(sortTeaDTO);
-        sortTea.setKindId(idKindTea);
         return sortTeaConverter.convert(sortTeaRepository.save(sortTea));
     }
 

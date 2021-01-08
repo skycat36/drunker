@@ -36,7 +36,7 @@ public class SortTeaController {
 
     @ApiOperation(value = "Вернуть сорт чая по id")
     @GetMapping("/{idSortTea}")
-    public ResponseEntity<Object> getSortTea(@PathVariable Long idSortTea){
+    public ResponseEntity<Object> getSortTea(@ApiParam(value = "Id") @PathVariable Long idSortTea){
         if (!sortTeaService.existByIdSortTeaDTO(idSortTea)){
             return new ResponseEntity<>(new NotFoundDTO(), HttpStatus.NOT_FOUND);
         }
@@ -62,7 +62,7 @@ public class SortTeaController {
 
     @ApiOperation(value = "Изменить сорт чая")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateRole(@PathVariable Long id,
+    public ResponseEntity<Object> updateRole(@ApiParam(value = "Id") @PathVariable Long id,
                                              @ApiParam(value = "Обновленный сорт чая") @RequestBody SortTeaDTO sortTeaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(sortTeaDTO, Create.class);
 
@@ -78,7 +78,7 @@ public class SortTeaController {
 
     @ApiOperation(value = "Удалить сорт чая")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteRoles(@PathVariable Long id){
+    public ResponseEntity<Object> deleteRoles(@ApiParam(value = "Id") @PathVariable Long id){
         if (!sortTeaService.existByIdSortTeaDTO(id)){
             return new ResponseEntity<>(new NotFoundDTO(), HttpStatus.NOT_FOUND);
         }

@@ -42,7 +42,7 @@ public class UserController {
 
     @ApiOperation(value = "Обновить пользователя")
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateUser(@PathVariable Long id,
+    public ResponseEntity<Object> updateUser(@ApiParam(value = "Id") @PathVariable Long id,
                                              @ApiParam(value = "User data") @RequestBody UserDTO userDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(userDTO, Create.class);
 
@@ -62,7 +62,7 @@ public class UserController {
 
     @ApiOperation(value = "Удалить пользователя")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id){
+    public ResponseEntity<Object> deleteUser(@ApiParam(value = "Id") @PathVariable Long id){
         if (userService.deleteUser(id)){
             return ResponseEntity.ok().build();
         }

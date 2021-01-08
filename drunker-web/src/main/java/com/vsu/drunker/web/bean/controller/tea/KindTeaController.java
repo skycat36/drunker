@@ -11,6 +11,7 @@ import com.vsu.drunker.web.validation.ValidationUtils;
 import com.vsu.drunker.web.validation.group.Create;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class KindTeaController {
 
     @ApiOperation(value = "Вернуть сорт чая по id")
     @GetMapping("/{idKindTea}")
-    public ResponseEntity<Object> getKindTea(@PathVariable Long idKindTea){
+    public ResponseEntity<Object> getKindTea(@ApiParam(value = "Id") @PathVariable Long idKindTea){
         if (!kindTeaService.existByIdKindTeaDTO(idKindTea)){
             return new ResponseEntity<>(new NotFoundDTO(), HttpStatus.NOT_FOUND);
         }

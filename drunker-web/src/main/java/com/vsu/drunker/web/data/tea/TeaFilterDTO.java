@@ -11,12 +11,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "TeaFilterDTO", description = "Фильтр для поиска чаев")
+@ApiModel(value = "TeaFilterDTO", description = "Р¤РёР»СЊС‚СЂ РґР»СЏ РїРѕРёСЃРєР° С‡Р°РµРІ")
 public class TeaFilterDTO {
 
-    @ApiModelProperty(value = "Фильтр сортов чая")
+    @ApiModelProperty(value = "Р¤РёР»СЊС‚СЂ СЃРѕСЂС‚РѕРІ С‡Р°СЏ")
     List<Long> listSorts;
 
-    @ApiModelProperty(value = "Фильтр видов чая")
+    @ApiModelProperty(value = "Р¤РёР»СЊС‚СЂ РІРёРґРѕРІ С‡Р°СЏ")
     List<Long> listKinds;
 }
