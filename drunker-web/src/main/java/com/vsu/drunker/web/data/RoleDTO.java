@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Роль пользователя")
+@ApiModel(value = "RoleDTO", description = "Роль пользователя")
 public class RoleDTO {
 
     @ApiModelProperty(value = "Id")

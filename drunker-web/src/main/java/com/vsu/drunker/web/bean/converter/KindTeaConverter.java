@@ -19,7 +19,7 @@ public interface KindTeaConverter {
     KindTea convert(KindTeaDTO kindTeaDTO);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
+    @Mapping(target = "name", source = "kindTeaDTO.name")
     @Mapping(target = "count",ignore = true)
     KindTea convert(Long id, KindTeaDTO kindTeaDTO);
 }

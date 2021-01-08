@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Разновидность чая")
+@ApiModel(value = "KindTeaDTO", description = "Разновидность чая")
 public class KindTeaDTO {
 
     @ApiModelProperty(value = "Id")

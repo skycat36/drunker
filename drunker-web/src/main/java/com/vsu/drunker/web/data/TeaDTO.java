@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Чай")
+@ApiModel(value = "TeaDTO", description = "Чай")
 public class TeaDTO {
 
     @ApiModelProperty(value = "Id")

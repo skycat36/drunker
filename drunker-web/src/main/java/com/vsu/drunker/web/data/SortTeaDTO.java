@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Сорт чая")
+@ApiModel(value = "SortTeaDTO", description = "РЎРѕСЂС‚ С‡Р°СЏ")
 public class SortTeaDTO {
 
     @ApiModelProperty(value = "Id")
@@ -28,6 +28,6 @@ public class SortTeaDTO {
 
     private Long kindTeaId;
 
-    @ApiModelProperty(value = "Вид чая")
+    @ApiModelProperty(value = "Р’РёРґ С‡Р°СЏ")
     private KindTeaDTO kindTeaDTO;
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Api(
-        value = "Контроллер для работы с чаем", produces = "Evgeny Popov"
+        value = "РљРѕРЅС‚СЂРѕР»Р»РµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‡Р°РµРј", produces = "Evgeny Popov"
 )
 @Slf4j
 @AllArgsConstructor
@@ -27,13 +27,13 @@ public class TeaController {
 
 
 
-//    @ApiOperation(value = "Возвращает список всех ролей")
+//    @ApiOperation(value = "Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… СЂРѕР»РµР№")
 //    @GetMapping("/getAllRoles")
 //    public ResponseEntity<Object> getAllRoles(){
 //        return new ResponseEntity<>(roleService.getAllRoleDTO(), HttpStatus.OK);
 //    }
 //
-//    @ApiOperation(value = "Создать роль")
+//    @ApiOperation(value = "РЎРѕР·РґР°С‚СЊ СЂРѕР»СЊ")
 //    @PostMapping
 //    public ResponseEntity<Object> createRole(RoleDTO roleDTO){
 //        BadRequestDTO badRequestDTO = ValidationUtils.validationObject(roleDTO, Create.class);

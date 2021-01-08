@@ -18,7 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Api(
-        value = "Контроллер для работы с видом чая", produces = "Evgeny Popov"
+        value = "РљРѕРЅС‚СЂРѕР»Р»РµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РІРёРґРѕРј С‡Р°СЏ", produces = "Evgeny Popov"
 )
 @Slf4j
 @AllArgsConstructor
@@ -28,13 +28,13 @@ public class KindTeaController {
 
     private final KindTeaService kindTeaService;
 
-    @ApiOperation(value = "Возвращает список всех видов чая")
+    @ApiOperation(value = "Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… РІРёРґРѕРІ С‡Р°СЏ")
     @GetMapping("/getAllKindTea")
     public ResponseEntity<Object> getAllSortTea(){
         return new ResponseEntity<>(kindTeaService.getAllKindTea(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Вернуть сорт чая по id")
+    @ApiOperation(value = "Р’РµСЂРЅСѓС‚СЊ СЃРѕСЂС‚ С‡Р°СЏ РїРѕ id")
     @GetMapping("/{idKindTea}")
     public ResponseEntity<Object> getKindTea(@PathVariable Long idKindTea){
         if (!kindTeaService.existByIdKindTeaDTO(idKindTea)){
@@ -44,7 +44,7 @@ public class KindTeaController {
         return new ResponseEntity<>(kindTeaService.getByIdKindTeaDTO(idKindTea), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Создать вид чая")
+    @ApiOperation(value = "РЎРѕР·РґР°С‚СЊ РІРёРґ С‡Р°СЏ")
     @PostMapping
     public ResponseEntity<Object> createSortTea(KindTeaDTO kindTeaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(kindTeaDTO, Create.class);

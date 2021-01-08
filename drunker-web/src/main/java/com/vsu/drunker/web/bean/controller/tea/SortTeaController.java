@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Api(
-        value = "Контроллер для работы с сортом чая", produces = "Evgeny Popov"
+        value = "РљРѕРЅС‚СЂРѕР»Р»РµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРѕСЂС‚РѕРј С‡Р°СЏ", produces = "Evgeny Popov"
 )
 @Slf4j
 @AllArgsConstructor
@@ -28,13 +28,13 @@ public class SortTeaController {
     private final SortTeaService sortTeaService;
     private final KindTeaService kindTeaService;
 
-    @ApiOperation(value = "Возвращает список всех сортов чая")
+    @ApiOperation(value = "Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… СЃРѕСЂС‚РѕРІ С‡Р°СЏ")
     @GetMapping("/getAllSortTea")
     public ResponseEntity<Object> getAllSortTea(){
         return new ResponseEntity<>(sortTeaService.getAllSortTea(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Вернуть сорт чая по id")
+    @ApiOperation(value = "Р’РµСЂРЅСѓС‚СЊ СЃРѕСЂС‚ С‡Р°СЏ РїРѕ id")
     @GetMapping("/{idSortTea}")
     public ResponseEntity<Object> getSortTea(@PathVariable Long idSortTea){
         if (!sortTeaService.existByIdSortTeaDTO(idSortTea)){
@@ -44,10 +44,10 @@ public class SortTeaController {
         return new ResponseEntity<>(sortTeaService.getByIdSortTeaDTO(idSortTea), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Создать сорт чая")
+    @ApiOperation(value = "РЎРѕР·РґР°С‚СЊ СЃРѕСЂС‚ С‡Р°СЏ")
     @PostMapping
     public ResponseEntity<Object> createSortTea(
-            @ApiParam(value = "Новый сорт чая") @RequestBody SortTeaDTO sortTeaDTO, @RequestBody Long idKindTea){
+            @ApiParam(value = "РќРѕРІС‹Р№ СЃРѕСЂС‚ С‡Р°СЏ") @RequestBody SortTeaDTO sortTeaDTO, @RequestBody Long idKindTea){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(sortTeaDTO, Create.class);
 
         if (!kindTeaService.existByIdKindTeaDTO(idKindTea)){
@@ -60,10 +60,10 @@ public class SortTeaController {
         return new ResponseEntity<>(sortTeaService.createSortTea(sortTeaDTO, idKindTea), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Изменить сорт чая")
+    @ApiOperation(value = "РР·РјРµРЅРёС‚СЊ СЃРѕСЂС‚ С‡Р°СЏ")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateRole(@PathVariable Long id,
-                                             @ApiParam(value = "Обновленный сорт чая") @RequestBody SortTeaDTO sortTeaDTO){
+                                             @ApiParam(value = "РћР±РЅРѕРІР»РµРЅРЅС‹Р№ СЃРѕСЂС‚ С‡Р°СЏ") @RequestBody SortTeaDTO sortTeaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(sortTeaDTO, Create.class);
 
         if (badRequestDTO != null) {
@@ -76,7 +76,7 @@ public class SortTeaController {
         return new ResponseEntity<>(sortTeaService.updateSortTea(id, sortTeaDTO), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Удалить сорт чая")
+    @ApiOperation(value = "РЈРґР°Р»РёС‚СЊ СЃРѕСЂС‚ С‡Р°СЏ")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteRoles(@PathVariable Long id){
         if (!sortTeaService.existByIdSortTeaDTO(id)){
