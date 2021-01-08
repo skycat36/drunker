@@ -30,13 +30,6 @@ public class SortTea extends DBEntity<Long> {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "KIND_ID", nullable = false)
-    private Long kindId;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "KIND_ID", updatable = false, insertable = false, nullable = false)
-    private KindTea kindTea;
-
     @Override
     public Long getId() {
         return id;

@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.lang.reflect.Field;
 
 @Entity
 @Table(name = "TEA", schema = DBScheme.DRUNKER_SCHEMA)
@@ -33,12 +34,33 @@ public class Tea extends DBEntity<Long> {
     @Column(name = "SORT_TEA_ID", nullable = false)
     private Long sortTeaId;
 
-    @Column(name = "COUNT_ON_WAREHOUSE", nullable = false)
-    private Integer countOnWarehouse;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SORT_TEA_ID", updatable = false, insertable = false, nullable = false)
     private SortTea sortTea;
+
+    @Column(name = "KIND_ID", nullable = false)
+    private Long kindId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "KIND_ID", updatable = false, insertable = false, nullable = false)
+    private KindTea kindTea;
+
+    @Column(name = "COUNT_ON_WAREHOUSE", nullable = false)
+    private Integer countOnWarehouse;
+
+    public static final Field NAME;
+    public static final Field SORT_TEA_ID;
+    public static final Field KIND_ID;
+
+    static {
+        try{
+            NAME = Tea.class.getDeclaredField("name");
+            SORT_TEA_ID = Tea.class.getDeclaredField("sortTeaId");
+            KIND_ID = Tea.class.getDeclaredField("kindId");
+        }catch (Exception ex){
+            throw new RuntimeException("Error init fields");
+        }
+    }
 
     @Override
     public Long getId() {

@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface TeaConverter {
 
-    TeaDTO convert(Tea role);
+    TeaDTO convert(Tea tea);
 
     @Mapping(target = "count",ignore = true)
-    Tea convert(TeaDTO role);
+    Tea convert(TeaDTO teaDTO);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "count",ignore = true)
-    Tea convert(Long id, TeaDTO role);
+    Tea convert(Long id, TeaDTO teaDTO);
 }
