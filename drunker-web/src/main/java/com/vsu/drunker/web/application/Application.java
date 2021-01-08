@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = {"com.vsu.drunker.web"})
+@SpringBootApplication(scanBasePackages = {"com.vsu.drunker"})
 @EnableFeignClients(basePackages = "com.vsu.drunker.web.bean.client")
 @EntityScan("com.vsu.drunker.db.model.entity")
 @EnableJpaRepositories("com.vsu.drunker.db.model.repository")

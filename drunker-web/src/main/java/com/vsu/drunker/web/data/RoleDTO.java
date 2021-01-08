@@ -20,7 +20,7 @@ public class RoleDTO {
     @ApiModelProperty(value = "Id")
     private Long id;
 
-    @ApiModelProperty(value = "Название роли")
+    @ApiModelProperty(value = "Название роли", required = true)
     @NotBlank(message = "Name can't be empty", groups = {Create.class, Update.class})
     private String name;
 }

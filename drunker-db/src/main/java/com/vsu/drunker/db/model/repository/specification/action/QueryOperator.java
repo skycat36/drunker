@@ -1,0 +1,10 @@
+package com.vsu.drunker.db.model.repository.specification.action;
+
+public enum QueryOperator {
+    GREATER_THAN,
+    LESS_THAN,
+    EQUALS,
+    LIKE,
+    NOT_EQ,
+    IN
+}

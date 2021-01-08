@@ -21,12 +21,12 @@ public class TeaDTO {
     @lombok.NonNull
     private Long id;
 
-    @ApiModelProperty(value = "Название чая")
+    @ApiModelProperty(value = "Название чая", required = true)
     @NotBlank(message = "Name can't be empty", groups = {Create.class, Update.class})
     @lombok.NonNull
     private String name;
 
-    @ApiModelProperty(value = "Количество на складе")
+    @ApiModelProperty(value = "Количество на складе", required = true)
     @Negative(message = "Name can't be empty or less zero", groups = {Create.class, Update.class})
     @lombok.NonNull
     private Integer countOnWarehouse;

@@ -19,7 +19,7 @@ public class KindTeaDTO {
     @ApiModelProperty(value = "Id")
     private Long id;
 
-    @ApiModelProperty(value = "Название")
+    @ApiModelProperty(value = "Название", required = true)
     @NotBlank(message = "Name can't be empty", groups = {Create.class, Update.class})
     private String name;
 }

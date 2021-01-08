@@ -25,8 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TeaController {
 
 
-
-
 //    @ApiOperation(value = "Возвращает список всех ролей")
 //    @GetMapping("/getAllRoles")
 //    public ResponseEntity<Object> getAllRoles(){

@@ -21,11 +21,12 @@ public class SortTeaDTO {
     @lombok.NonNull
     private Long id;
 
-    @ApiModelProperty(value = "Id")
+    @ApiModelProperty(value = "Название", required = true)
     @NotBlank(message = "Name can't be empty", groups = {Create.class, Update.class})
     @lombok.NonNull
     private String name;
 
+    @ApiModelProperty(value = "Вид чая id", required = true)
     private Long kindTeaId;
 
     @ApiModelProperty(value = "Вид чая")
