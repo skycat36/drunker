@@ -16,4 +16,9 @@ public class NotFoundDTO {
         this.message = "No message available";
     }
 
+    public NotFoundDTO(String message) {
+        this.status = 404;
+        this.message = message;
+    }
+
 }

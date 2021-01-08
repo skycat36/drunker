@@ -26,9 +26,4 @@ public class SortTeaDTO {
     @lombok.NonNull
     private String name;
 
-    @ApiModelProperty(value = "Вид чая id", required = true)
-    private Long kindTeaId;
-
-    @ApiModelProperty(value = "Вид чая")
-    private KindTeaDTO kindTeaDTO;
 }

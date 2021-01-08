@@ -1,7 +1,10 @@
 package com.vsu.drunker.web.bean.controller.tea;
 
+import com.vsu.drunker.web.bean.servise.tea.KindTeaService;
+import com.vsu.drunker.web.bean.servise.tea.SortTeaService;
 import com.vsu.drunker.web.bean.servise.tea.TeaService;
-import com.vsu.drunker.web.data.TeaDTO;
+import com.vsu.drunker.web.data.tea.CreateTeaDTO;
+import com.vsu.drunker.web.data.tea.TeaDTO;
 import com.vsu.drunker.web.data.errors.BadRequestDTO;
 import com.vsu.drunker.web.data.errors.NotFoundDTO;
 import com.vsu.drunker.web.data.tea.TeaFilterDTO;
@@ -26,9 +29,11 @@ import org.springframework.web.bind.annotation.*;
 public class TeaController {
 
     private final TeaService teaService;
+    private final KindTeaService kindTeaService;
+    private final SortTeaService sortTeaService;
 
     @ApiOperation(value = "Возвращает список чаев по заданному фильтру")
-    @GetMapping("/getTeaByFilter")
+    @PostMapping("/getTeaByFilter")
     public ResponseEntity<Object> getTeaList(@RequestBody TeaFilterDTO teaFilterDTO){
         return new ResponseEntity<>(teaService.getTeaByFilter(teaFilterDTO), HttpStatus.OK);
     }
@@ -41,13 +46,22 @@ public class TeaController {
 
     @ApiOperation(value = "Создать чай")
     @PostMapping
-    public ResponseEntity<Object> createTea(@RequestBody TeaDTO teaDTO){
-        BadRequestDTO badRequestDTO = ValidationUtils.validationObject(teaDTO, Create.class);
+    public ResponseEntity<Object> createTea(@RequestBody CreateTeaDTO createTeaDTO){
+        BadRequestDTO badRequestDTO = ValidationUtils.validationObject(createTeaDTO, Create.class);
 
         if (badRequestDTO != null) {
             return new ResponseEntity<>(badRequestDTO, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(teaService.createTea(teaDTO), HttpStatus.OK);
+
+        if (!kindTeaService.existByIdKindTeaDTO(createTeaDTO.getKindTeaId())){
+            return new ResponseEntity<>(new NotFoundDTO("Sort tea not exist"), HttpStatus.NOT_FOUND);
+        }
+
+        if (!sortTeaService.existByIdSortTeaDTO(createTeaDTO.getSortTeaId())){
+            return new ResponseEntity<>(new NotFoundDTO("Kind tea not exist"), HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(teaService.createTea(createTeaDTO), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Обновить информацию о чае")

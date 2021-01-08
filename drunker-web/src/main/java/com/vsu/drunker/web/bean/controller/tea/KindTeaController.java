@@ -4,7 +4,7 @@ import com.vsu.drunker.web.bean.servise.tea.KindTeaService;
 import com.vsu.drunker.web.bean.servise.user.RoleService;
 import com.vsu.drunker.web.data.KindTeaDTO;
 import com.vsu.drunker.web.data.RoleDTO;
-import com.vsu.drunker.web.data.SortTeaDTO;
+import com.vsu.drunker.web.data.KindTeaDTO;
 import com.vsu.drunker.web.data.errors.BadRequestDTO;
 import com.vsu.drunker.web.data.errors.NotFoundDTO;
 import com.vsu.drunker.web.validation.ValidationUtils;
@@ -31,7 +31,7 @@ public class KindTeaController {
 
     @ApiOperation(value = "Возвращает список всех видов чая")
     @GetMapping("/getAllKindTea")
-    public ResponseEntity<Object> getAllSortTea(){
+    public ResponseEntity<Object> getAllKindTea(){
         return new ResponseEntity<>(kindTeaService.getAllKindTea(), HttpStatus.OK);
     }
 
@@ -47,7 +47,7 @@ public class KindTeaController {
 
     @ApiOperation(value = "Создать вид чая")
     @PostMapping
-    public ResponseEntity<Object> createSortTea(KindTeaDTO kindTeaDTO){
+    public ResponseEntity<Object> createKindTea(@RequestBody KindTeaDTO kindTeaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(kindTeaDTO, Create.class);
 
         if (badRequestDTO != null) {

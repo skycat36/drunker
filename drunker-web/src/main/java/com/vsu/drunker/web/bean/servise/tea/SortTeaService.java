@@ -21,10 +21,8 @@ public class SortTeaService {
     private final SortTeaConverter sortTeaConverter;
 
     @Transactional
-    public SortTeaDTO createSortTea(SortTeaDTO sortTeaDTO, Long idKindTea){
-
-        SortTea sortTea = sortTeaConverter.convert(sortTeaDTO);
-        return sortTeaConverter.convert(sortTeaRepository.save(sortTea));
+    public SortTeaDTO createSortTea(SortTeaDTO sortTeaDTO){
+        return sortTeaConverter.convert(sortTeaRepository.save(sortTeaConverter.convert(sortTeaDTO)));
     }
 
     @Transactional

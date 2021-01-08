@@ -47,17 +47,13 @@ public class SortTeaController {
     @ApiOperation(value = "Создать сорт чая")
     @PostMapping
     public ResponseEntity<Object> createSortTea(
-            @ApiParam(value = "Новый сорт чая") @RequestBody SortTeaDTO sortTeaDTO, @RequestBody Long idKindTea){
+            @ApiParam(value = "Новый сорт чая") @RequestBody SortTeaDTO sortTeaDTO){
         BadRequestDTO badRequestDTO = ValidationUtils.validationObject(sortTeaDTO, Create.class);
-
-        if (!kindTeaService.existByIdKindTeaDTO(idKindTea)){
-            return new ResponseEntity<>("Kind tea not exist", HttpStatus.BAD_REQUEST);
-        }
 
         if (badRequestDTO != null) {
             return new ResponseEntity<>(badRequestDTO, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(sortTeaService.createSortTea(sortTeaDTO, idKindTea), HttpStatus.OK);
+        return new ResponseEntity<>(sortTeaService.createSortTea(sortTeaDTO), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Изменить сорт чая")
