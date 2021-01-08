@@ -19,9 +19,6 @@ SET row_security = off;
 -- Name: drunker; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE drunker;
-
-
 ALTER DATABASE drunker OWNER TO postgres;
 
 \connect drunker
@@ -52,13 +49,13 @@ SET default_tablespace = '';
 --
 
 CREATE TABLE drunker.usr (
-    id bigint NOT NULL,
-    fio character varying(256) NOT NULL,
-    login character varying(128) NOT NULL,
-    password character varying(256) NOT NULL,
-    phone character varying(50),
-    email character varying(50),
-    role_id bigint NOT NULL
+                             id bigint NOT NULL,
+                             fio character varying(256) NOT NULL,
+                             login character varying(128) NOT NULL,
+                             password character varying(256) NOT NULL,
+                             phone character varying(50),
+                             email character varying(50),
+                             role_id bigint NOT NULL
 );
 
 
@@ -90,10 +87,10 @@ ALTER SEQUENCE drunker."User_id_seq" OWNED BY drunker.usr.id;
 --
 
 CREATE TABLE drunker.basket_of_goods (
-    id bigint NOT NULL,
-    tea_id bigint NOT NULL,
-    user_id bigint NOT NULL,
-    count_in_card integer NOT NULL
+                                         id bigint NOT NULL,
+                                         tea_id bigint NOT NULL,
+                                         user_id bigint NOT NULL,
+                                         count_in_card integer NOT NULL
 );
 
 
@@ -121,12 +118,46 @@ ALTER SEQUENCE drunker.basket_of_goods_id_seq OWNED BY drunker.basket_of_goods.i
 
 
 --
+-- Name: image; Type: TABLE; Schema: drunker; Owner: postgres
+--
+
+CREATE TABLE drunker.image (
+                               id bigint NOT NULL,
+                               name character(256) NOT NULL,
+                               type character(128)
+);
+
+
+ALTER TABLE drunker.image OWNER TO postgres;
+
+--
+-- Name: image_id_seq; Type: SEQUENCE; Schema: drunker; Owner: postgres
+--
+
+CREATE SEQUENCE drunker.image_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE drunker.image_id_seq OWNER TO postgres;
+
+--
+-- Name: image_id_seq; Type: SEQUENCE OWNED BY; Schema: drunker; Owner: postgres
+--
+
+ALTER SEQUENCE drunker.image_id_seq OWNED BY drunker.image.id;
+
+
+--
 -- Name: kind_of_tea; Type: TABLE; Schema: drunker; Owner: postgres
 --
 
 CREATE TABLE drunker.kind_of_tea (
-    id bigint NOT NULL,
-    name character varying(128) NOT NULL
+                                     id bigint NOT NULL,
+                                     name character varying(128) NOT NULL
 );
 
 
@@ -158,9 +189,9 @@ ALTER SEQUENCE drunker.kind_of_tea_id_seq OWNED BY drunker.kind_of_tea.id;
 --
 
 CREATE TABLE drunker.notification (
-    id bigint NOT NULL,
-    user_id bigint NOT NULL,
-    tea_id bigint NOT NULL
+                                      id bigint NOT NULL,
+                                      user_id bigint NOT NULL,
+                                      tea_id bigint NOT NULL
 );
 
 
@@ -192,8 +223,8 @@ ALTER SEQUENCE drunker.notification_id_seq OWNED BY drunker.notification.id;
 --
 
 CREATE TABLE drunker.role (
-    id bigint NOT NULL,
-    name character varying(50) NOT NULL
+                              id bigint NOT NULL,
+                              name character varying(50) NOT NULL
 );
 
 
@@ -225,9 +256,8 @@ ALTER SEQUENCE drunker.role_id_seq OWNED BY drunker.role.id;
 --
 
 CREATE TABLE drunker.sort_of_tea (
-    id bigint NOT NULL,
-    name character varying(256) NOT NULL,
-    kind_id bigint NOT NULL
+                                     id bigint NOT NULL,
+                                     name character varying(256) NOT NULL
 );
 
 
@@ -259,10 +289,11 @@ ALTER SEQUENCE drunker.sort_of_tea_id_seq OWNED BY drunker.sort_of_tea.id;
 --
 
 CREATE TABLE drunker.tea (
-    id bigint NOT NULL,
-    name character varying(256) NOT NULL,
-    sort_tea_id bigint NOT NULL,
-    count_on_warehouse integer NOT NULL
+                             id bigint NOT NULL,
+                             name character varying(256) NOT NULL,
+                             sort_tea_id bigint NOT NULL,
+                             count_on_warehouse integer NOT NULL,
+                             kind_id bigint
 );
 
 
@@ -294,6 +325,13 @@ ALTER SEQUENCE drunker.tea_id_seq OWNED BY drunker.tea.id;
 --
 
 ALTER TABLE ONLY drunker.basket_of_goods ALTER COLUMN id SET DEFAULT nextval('drunker.basket_of_goods_id_seq'::regclass);
+
+
+--
+-- Name: image id; Type: DEFAULT; Schema: drunker; Owner: postgres
+--
+
+ALTER TABLE ONLY drunker.image ALTER COLUMN id SET DEFAULT nextval('drunker.image_id_seq'::regclass);
 
 
 --
@@ -340,6 +378,12 @@ ALTER TABLE ONLY drunker.usr ALTER COLUMN id SET DEFAULT nextval('drunker."User_
 
 --
 -- Data for Name: basket_of_goods; Type: TABLE DATA; Schema: drunker; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: image; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
 
@@ -397,6 +441,13 @@ SELECT pg_catalog.setval('drunker.basket_of_goods_id_seq', 1, false);
 
 
 --
+-- Name: image_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
+--
+
+SELECT pg_catalog.setval('drunker.image_id_seq', 1, false);
+
+
+--
 -- Name: kind_of_tea_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
 --
 
@@ -437,6 +488,14 @@ SELECT pg_catalog.setval('drunker.tea_id_seq', 1, false);
 
 ALTER TABLE ONLY drunker.basket_of_goods
     ADD CONSTRAINT basket_of_goods_pk PRIMARY KEY (id);
+
+
+--
+-- Name: image image_pk; Type: CONSTRAINT; Schema: drunker; Owner: postgres
+--
+
+ALTER TABLE ONLY drunker.image
+    ADD CONSTRAINT image_pk PRIMARY KEY (id);
 
 
 --
@@ -492,6 +551,13 @@ ALTER TABLE ONLY drunker.usr
 --
 
 CREATE UNIQUE INDEX basket_of_goods_id_uindex ON drunker.basket_of_goods USING btree (id);
+
+
+--
+-- Name: image_id_uindex; Type: INDEX; Schema: drunker; Owner: postgres
+--
+
+CREATE UNIQUE INDEX image_id_uindex ON drunker.image USING btree (id);
 
 
 --
@@ -562,11 +628,11 @@ ALTER TABLE ONLY drunker.notification
 
 
 --
--- Name: sort_of_tea sort_of_tea_kind_of_tea_id_fk; Type: FK CONSTRAINT; Schema: drunker; Owner: postgres
+-- Name: tea tea_kind_of_tea_id_fk; Type: FK CONSTRAINT; Schema: drunker; Owner: postgres
 --
 
-ALTER TABLE ONLY drunker.sort_of_tea
-    ADD CONSTRAINT sort_of_tea_kind_of_tea_id_fk FOREIGN KEY (kind_id) REFERENCES drunker.kind_of_tea(id);
+ALTER TABLE ONLY drunker.tea
+    ADD CONSTRAINT tea_kind_of_tea_id_fk FOREIGN KEY (kind_id) REFERENCES drunker.kind_of_tea(id);
 
 
 --
