@@ -9,6 +9,8 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
 
+  main.allow-bean-definition-overriding: true
+
 services:
   filestorage-service:
     url: http://springboot-filestorage:8085

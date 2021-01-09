@@ -27,19 +27,19 @@ public class User extends DBEntity<Long> {
     @Column(name = "ID", unique = true, nullable = false)
     private Long id;
 
+    @Column(name = "OUT_ID", nullable = false)
+    private String outId;
+
     @Column(name = "FIO", nullable = false)
     private String fio;
 
-    @Column(name = "LOGIN", nullable = false)
-    private String login;
-
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
+    @Column(name = "NAME")
+    private String name;
 
     @Column(name = "PHONE")
     private String phone;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     @Column(name = "ROLE_ID", nullable = false)

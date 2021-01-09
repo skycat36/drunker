@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public class Role extends DBEntity<Long> {
 
@@ -25,6 +25,7 @@ public class Role extends DBEntity<Long> {
     private Long id;
 
     @Column(name = "NAME", nullable = false)
+    @lombok.NonNull
     private String name;
 
     @Override

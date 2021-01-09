@@ -12,6 +12,22 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
 
+security:
+  oauth2:
+    client:
+      clientId: 687133247854-2lqmcd71dmgki31guic66r87qqgh11ok.apps.googleusercontent.com
+      clientSecret: lr4h3410_boLfjliE2uSnqar
+      clientAuthenticationScheme: form
+      scope:
+        - openid
+        - email
+        - profile
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    resource:
+      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+      preferTokenInfo: true
+
 services:
   filestorage-service:
     url: http://springboot-filestorage:8085

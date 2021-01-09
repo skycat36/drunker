@@ -54,11 +54,11 @@ SET default_tablespace = '';
 CREATE TABLE drunker.usr (
                              id bigint NOT NULL,
                              fio character varying(256) NOT NULL,
-                             login character varying(128) NOT NULL,
-                             password character varying(256) NOT NULL,
+                             name character varying(128),
                              phone character varying(50),
                              email character varying(50),
-                             role_id bigint NOT NULL
+                             role_id bigint,
+                             out_id character varying(256)
 );
 
 
@@ -395,6 +395,7 @@ ALTER TABLE ONLY drunker.usr ALTER COLUMN id SET DEFAULT nextval('drunker."User_
 -- Data for Name: kind_of_tea; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
+INSERT INTO drunker.kind_of_tea VALUES (1, 'Зеленый');
 
 
 --
@@ -407,26 +408,29 @@ ALTER TABLE ONLY drunker.usr ALTER COLUMN id SET DEFAULT nextval('drunker."User_
 -- Data for Name: role; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
-INSERT INTO drunker.role VALUES (1, 'test');
-INSERT INTO drunker.role VALUES (2, 'test123');
+INSERT INTO drunker.role VALUES (3, 'GUEST');
+INSERT INTO drunker.role VALUES (4, 'ADMIN');
 
 
 --
 -- Data for Name: sort_of_tea; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
+INSERT INTO drunker.sort_of_tea VALUES (1, 'Колумбийский');
 
 
 --
 -- Data for Name: tea; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
+INSERT INTO drunker.tea VALUES (1, 'Липтон найс теа', 1, 5, 1);
 
 
 --
 -- Data for Name: usr; Type: TABLE DATA; Schema: drunker; Owner: postgres
 --
 
+INSERT INTO drunker.usr VALUES (18, 'Евгений Дмитриевич', 'Евгений', NULL, '36furious@gmail.com', 3, '108647799259667291028');
 
 
 --
@@ -454,7 +458,7 @@ SELECT pg_catalog.setval('drunker.image_id_seq', 1, false);
 -- Name: kind_of_tea_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
 --
 
-SELECT pg_catalog.setval('drunker.kind_of_tea_id_seq', 1, false);
+SELECT pg_catalog.setval('drunker.kind_of_tea_id_seq', 1, true);
 
 
 --
@@ -468,21 +472,21 @@ SELECT pg_catalog.setval('drunker.notification_id_seq', 1, false);
 -- Name: role_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
 --
 
-SELECT pg_catalog.setval('drunker.role_id_seq', 2, true);
+SELECT pg_catalog.setval('drunker.role_id_seq', 4, true);
 
 
 --
 -- Name: sort_of_tea_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
 --
 
-SELECT pg_catalog.setval('drunker.sort_of_tea_id_seq', 1, false);
+SELECT pg_catalog.setval('drunker.sort_of_tea_id_seq', 18, true);
 
 
 --
 -- Name: tea_id_seq; Type: SEQUENCE SET; Schema: drunker; Owner: postgres
 --
 
-SELECT pg_catalog.setval('drunker.tea_id_seq', 1, false);
+SELECT pg_catalog.setval('drunker.tea_id_seq', 1, true);
 
 
 --
