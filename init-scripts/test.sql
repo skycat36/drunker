@@ -19,6 +19,9 @@ SET row_security = off;
 -- Name: drunker; Type: DATABASE; Schema: -; Owner: postgres
 --
 
+CREATE DATABASE drunker;
+
+
 ALTER DATABASE drunker OWNER TO postgres;
 
 \connect drunker
